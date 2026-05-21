@@ -1,0 +1,6 @@
+{
+  "name": "Criador de Shorts Cristãos",
+  "description": "Transforme versículos e mensagens bíblicas em lindos vídeos curtos de 9:16 (Shorts/Reels) com reflexões e narração por IA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
