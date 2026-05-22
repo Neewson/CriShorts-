@@ -48,7 +48,7 @@ export default function App() {
   );
   
   // Customization styling state
-  const [fontFamily, setFontFamily] = useState<'serif' | 'sans' | 'mono'>('serif');
+  const [fontFamily, setFontFamily] = useState<'serif' | 'sans' | 'mono' | 'display' | 'cinzel' | 'montserrat' | 'handwritten'>('serif');
   const [textAlignment, setTextAlignment] = useState<'center' | 'left' | 'right'>('center');
   const [textPosition, setTextPosition] = useState<'top' | 'center' | 'bottom'>('center');
   const [overlayOpacity, setOverlayOpacity] = useState<number>(45);
@@ -1434,20 +1434,23 @@ export default function App() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {/* FONT SELECTOR */}
                   <div>
-                    <label className="text-[10px] font-mono font-bold uppercase text-gray-400 block mb-1.5">Fonte do Texto:</label>
-                    <div className="flex rounded-xl bg-white p-0.5 border border-gray-200">
-                      {(['serif', 'sans', 'mono'] as const).map((font) => (
-                        <button
-                          key={font}
-                          onClick={() => setFontFamily(font)}
-                          className={`flex-1 text-[11px] font-medium py-1.5 rounded-lg transition-all capitalize cursor-pointer ${
-                            fontFamily === font ? 'bg-black text-white font-bold' : 'text-gray-500 hover:text-black'
-                          }`}
-                        >
-                          {font === 'serif' ? 'Serifada' : font === 'sans' ? 'Simples' : 'Fira Mono'}
-                        </button>
-                      ))}
-                    </div>
+                    <label className="text-[10px] font-mono font-bold uppercase text-gray-400 block mb-1.5">Fonte da Legenda / Textos:</label>
+                    <select
+                      value={fontFamily}
+                      onChange={(e) => {
+                        setFontFamily(e.target.value as any);
+                        setApiLogMessage(`Fonte alterada para: ${e.target.value}`);
+                      }}
+                      className="w-full bg-white text-gray-900 rounded-xl p-2.5 text-[11px] border border-gray-200 focus:border-black focus:outline-none focus:ring-1 focus:ring-black/20 font-bold cursor-pointer"
+                    >
+                      <option value="serif">Playfair Display (Serifada Clássica)</option>
+                      <option value="sans">Inter (Sans Simples Moderna)</option>
+                      <option value="mono">JetBrains Mono (Espaçada Clean)</option>
+                      <option value="display">Space Grotesk (Forte e Expressiva)</option>
+                      <option value="cinzel">Cinzel (Solene & Bíblica)</option>
+                      <option value="montserrat">Montserrat (Impactante para Vídeos)</option>
+                      <option value="handwritten">Charm (Manuscrita e Compassiva)</option>
+                    </select>
                   </div>
 
                   {/* ALIGN VALUES */}
@@ -1723,7 +1726,13 @@ export default function App() {
                   <div 
                     className={`relative z-20 my-auto w-full transition-all flex flex-col justify-center ${aspectRatio === '16:9' ? 'min-h-[110px]' : 'min-h-[220px]'}`}
                     style={{
-                      fontFamily: fontFamily === 'serif' ? 'Playfair Display, serif' : fontFamily === 'mono' ? 'JetBrains Mono, monospace' : 'Inter, sans-serif',
+                      fontFamily: fontFamily === 'serif' ? 'Playfair Display, serif' : 
+                                  fontFamily === 'mono' ? 'JetBrains Mono, monospace' : 
+                                  fontFamily === 'display' ? 'Space Grotesk, sans-serif' :
+                                  fontFamily === 'cinzel' ? 'Cinzel, serif' :
+                                  fontFamily === 'montserrat' ? 'Montserrat, sans-serif' :
+                                  fontFamily === 'handwritten' ? 'Charm, cursive' :
+                                  'Inter, sans-serif',
                       textAlign: textAlignment,
                       justifyContent: textPosition === 'top' ? 'flex-start' : textPosition === 'bottom' ? 'flex-end' : 'center',
                       color: textColor

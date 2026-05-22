@@ -162,7 +162,7 @@ export async function exportToImage(
   reflection: string,
   imageUrl: string,
   config: {
-    fontFamily: 'serif' | 'sans' | 'mono';
+    fontFamily: 'serif' | 'sans' | 'mono' | 'display' | 'cinzel' | 'montserrat' | 'handwritten';
     textAlignment: 'center' | 'left' | 'right';
     textColor: string;
     overlayOpacity: number;
@@ -218,6 +218,10 @@ export async function exportToImage(
   // Font styling selector
   const fontName = config.fontFamily === 'serif' ? 'Playfair Display, Georgia, serif' : 
                     config.fontFamily === 'mono' ? 'JetBrains Mono, Courier, monospace' : 
+                    config.fontFamily === 'display' ? 'Space Grotesk, sans-serif' :
+                    config.fontFamily === 'cinzel' ? 'Cinzel, Georgia, serif' :
+                    config.fontFamily === 'montserrat' ? 'Montserrat, sans-serif' :
+                    config.fontFamily === 'handwritten' ? 'Charm, cursive' :
                     'Inter, system-ui, sans-serif';
 
   // Draw Watermark at the top center
@@ -600,7 +604,7 @@ export async function exportToVideo(
   reflection: string,
   imageUrl: string,
   config: {
-    fontFamily: 'serif' | 'sans' | 'mono';
+    fontFamily: 'serif' | 'sans' | 'mono' | 'display' | 'cinzel' | 'montserrat' | 'handwritten';
     textAlignment: 'center' | 'left' | 'right';
     textColor: string;
     overlayOpacity: number;
@@ -748,6 +752,10 @@ export async function exportToVideo(
 
   const fontName = config.fontFamily === 'serif' ? 'Playfair Display, Georgia, serif' : 
                     config.fontFamily === 'mono' ? 'JetBrains Mono, Courier, monospace' : 
+                    config.fontFamily === 'display' ? 'Space Grotesk, sans-serif' :
+                    config.fontFamily === 'cinzel' ? 'Cinzel, Georgia, serif' :
+                    config.fontFamily === 'montserrat' ? 'Montserrat, sans-serif' :
+                    config.fontFamily === 'handwritten' ? 'Charm, cursive' :
                     'Inter, system-ui, sans-serif';
 
   // Text wrapper helper

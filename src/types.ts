@@ -32,7 +32,7 @@ export interface ShortConfig {
   backgroundPresetId: ThemePresetId;
   backgroundMediaUrl: string; // holds generated base64 or absolute preset image URL
   overlayOpacity: number; // 0 to 100
-  fontFamily: 'serif' | 'sans' | 'mono';
+  fontFamily: 'serif' | 'sans' | 'mono' | 'display' | 'cinzel' | 'montserrat' | 'handwritten';
   textAlignment: 'center' | 'left' | 'right';
   textColor: string;
   textPosition: 'top' | 'center' | 'bottom';
